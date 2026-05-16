@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { notFound } from "next/navigation";
 import { PlayerProfile } from "@/components/PlayerProfile";
 import { getPlayerById } from "@/lib/players";
