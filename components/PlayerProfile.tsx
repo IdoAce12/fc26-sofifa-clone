@@ -1,5 +1,5 @@
-import Image from "next/image";
 import type { PlayerDetail } from "@/lib/players";
+import { PlayerFaceImage } from "./PlayerFaceImage";
 import {
   formatCurrency,
   formatStars,
@@ -50,21 +50,13 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
         <section className="overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-pitch-800/80 via-pitch-900/90 to-pitch-950 shadow-card shadow-glow">
           <div className="grid gap-6 p-6 sm:grid-cols-[auto_1fr] sm:gap-8 sm:p-8">
             <div className="flex justify-center sm:justify-start">
-              {player.player_face_url ? (
-                <Image
-                  src={player.player_face_url}
-                  alt={displayName}
-                  width={160}
-                  height={160}
-                  className="h-36 w-36 rounded-2xl bg-pitch-700 object-cover ring-2 ring-white/10 sm:h-40 sm:w-40"
-                  unoptimized
-                  priority
-                />
-              ) : (
-                <div className="flex h-36 w-36 items-center justify-center rounded-2xl bg-pitch-700 text-4xl font-bold text-zinc-600 ring-2 ring-white/10 sm:h-40 sm:w-40">
-                  ?
-                </div>
-              )}
+              <PlayerFaceImage
+                playerId={player.player_id}
+                faceUrl={player.player_face_url}
+                name={displayName}
+                size="xl"
+                priority
+              />
             </div>
 
             <div className="flex flex-col justify-center text-center sm:text-left">

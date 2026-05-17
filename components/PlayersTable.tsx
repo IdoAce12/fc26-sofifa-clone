@@ -1,43 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { PlayerRow } from "@/lib/players";
+import { PlayerFaceImage } from "./PlayerFaceImage";
 import { RatingBadge } from "./RatingBadge";
 
 type PlayersTableProps = {
   players: PlayerRow[];
   loading: boolean;
 };
-
-function PlayerAvatar({
-  url,
-  name,
-  size = "md",
-}: {
-  url: string | null;
-  name: string;
-  size?: "md" | "lg";
-}) {
-  const dim = size === "lg" ? "h-14 w-14" : "h-12 w-12";
-  if (url) {
-    return (
-      <Image
-        src={url}
-        alt={name}
-        width={size === "lg" ? 56 : 48}
-        height={size === "lg" ? 56 : 48}
-        className={`${dim} shrink-0 rounded-lg bg-pitch-700 object-cover ring-1 ring-white/10`}
-        unoptimized
-      />
-    );
-  }
-  return (
-    <div
-      className={`${dim} flex shrink-0 items-center justify-center rounded-lg bg-pitch-700 text-xs font-bold text-zinc-500 ring-1 ring-white/10`}
-    >
-      ?
-    </div>
-  );
-}
 
 function PlayerRowLink({
   playerId,
@@ -79,7 +48,12 @@ function MobilePlayerCard({ player }: { player: PlayerRow }) {
       playerId={player.player_id}
       className="flex items-center gap-3 rounded-xl border border-white/5 bg-pitch-900/50 p-3 active:bg-white/[0.06]"
     >
-      <PlayerAvatar url={player.player_face_url} name={player.short_name} size="lg" />
+      <PlayerFaceImage
+        playerId={player.player_id}
+        faceUrl={player.player_face_url}
+        name={player.short_name}
+        size="lg"
+      />
       <div className="min-w-0 flex-1">
         <p className="truncate font-semibold text-white">{player.short_name}</p>
         <p className="truncate text-xs text-zinc-500">
@@ -137,8 +111,9 @@ export function PlayersTable({ players, loading }: PlayersTableProps) {
                       playerId={player.player_id}
                       className="flex items-center gap-3 !min-h-0"
                     >
-                      <PlayerAvatar
-                        url={player.player_face_url}
+                      <PlayerFaceImage
+                        playerId={player.player_id}
+                        faceUrl={player.player_face_url}
                         name={player.short_name}
                       />
                       <div className="min-w-0">
