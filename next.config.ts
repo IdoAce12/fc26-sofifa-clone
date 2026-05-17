@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.sofifa.net",
+        hostname: "cmtracker.ro",
       },
     ],
   },
