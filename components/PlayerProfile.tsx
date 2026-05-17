@@ -52,7 +52,6 @@ export function PlayerProfile({ player }: PlayerProfileProps) {
             <div className="flex justify-center sm:justify-start">
               <PlayerFaceImage
                 playerId={player.player_id}
-                faceUrl={player.player_face_url}
                 name={displayName}
                 size="xl"
                 priority

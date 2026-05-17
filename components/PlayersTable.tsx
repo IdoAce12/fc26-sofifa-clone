@@ -50,7 +50,6 @@ function MobilePlayerCard({ player }: { player: PlayerRow }) {
     >
       <PlayerFaceImage
         playerId={player.player_id}
-        faceUrl={player.player_face_url}
         name={player.short_name}
         size="lg"
       />
@@ -113,7 +112,6 @@ export function PlayersTable({ players, loading }: PlayersTableProps) {
                     >
                       <PlayerFaceImage
                         playerId={player.player_id}
-                        faceUrl={player.player_face_url}
                         name={player.short_name}
                       />
                       <div className="min-w-0">
