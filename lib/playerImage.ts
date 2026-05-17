@@ -1,12 +1,12 @@
-/** Local green silhouette when a CMTracker portrait is missing. */
+/** Local green silhouette when an EA portrait is missing. */
 export const LOCAL_PLAYER_PLACEHOLDER = "/player-placeholder.svg";
 
 /**
  * Portrait URL from `player_id` only — ignores CSV `player_face_url`.
- * CMTracker: `https://cmtracker.ro/assets/images/players/{playerId}.webp`
+ * EA FC26: `https://images.ut.ea.com/game-assets/fc26/fc_player_headshots/{playerId}.png`
  */
 export function getPlayerImageUrl(playerId: number): string {
-  return `https://cmtracker.ro/assets/images/players/${playerId}.webp`;
+  return `https://images.ut.ea.com/game-assets/fc26/fc_player_headshots/${playerId}.png`;
 }
 
 export function getPlayerImageFallbacks(): string[] {
